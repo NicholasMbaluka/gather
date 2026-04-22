@@ -7,7 +7,7 @@ export async function GET(request: Request) {
   const onboard = searchParams.get('onboard')
 
   if (code) {
-    const supabase = createServerSupabaseClient()
+    const supabase = await createServerSupabaseClient()
     const { data: { user } } = await supabase.auth.exchangeCodeForSession(code)
 
     if (user) {
